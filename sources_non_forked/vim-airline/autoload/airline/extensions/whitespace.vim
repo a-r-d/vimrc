@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2015 Bailey Ling.
+" MIT License. Copyright (c) 2013-2016 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 " http://got-ravings.blogspot.com/2008/10/vim-pr0n-statusline-whitespace-flags.html
@@ -49,7 +49,14 @@ function! airline#extensions#whitespace#check()
 
     let trailing = 0
     if index(checks, 'trailing') > -1
-      let trailing = search('\s$', 'nw')
+      try
+        let regexp = get(g:, 'airline#extensions#whitespace#trailing_regexp', '\s$')
+        let trailing = search(regexp, 'nw')
+      catch
+        echomsg 'airline#whitespace: error occured evaluating '. regexp
+        echomsg v:exception
+        return ''
+      endtry
     endif
 
     let mixed = 0

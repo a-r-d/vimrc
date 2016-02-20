@@ -96,12 +96,15 @@ else
     let g:airline#themes#base16#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
     let g:airline#themes#base16#palette.visual_modified = g:airline#themes#base16#palette.normal_modified
 
-    let s:IA = airline#themes#get_highlight2(['NonText', 'fg'], ['CursorLine', 'bg'])
-    let g:airline#themes#base16#palette.inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA)
-    let g:airline#themes#base16#palette.inactive_modified = {
-          \ 'airline_c': [ group[0], '', group[2], '', '' ]
-          \ }
-    
+    " Use VertSplit's bg and default fg (reversed) for inactive statusline.
+    let s:VS = airline#themes#get_highlight('VertSplit')
+    let s:IA = [ s:VS[1], 'NONE', s:VS[2], 'NONE', 'reverse']
+    let g:airline#themes#base16#palette.inactive =
+          \ airline#themes#generate_color_map(s:IA, s:IA, s:IA, s:IA, s:IA, s:IA)
+    let s:IM = [ s:VS[1], 'NONE', s:VS[2], 'NONE', 'reverse,italic']
+    let g:airline#themes#base16#palette.inactive_modified =
+          \ airline#themes#generate_color_map(s:IM, s:IM, s:IM, s:IM, s:IM, s:IM)
+
     " Warnings
     let s:WI = airline#themes#get_highlight2(['WarningMsg', 'bg'], ['WarningMsg', 'fg'], 'bold')
     let g:airline#themes#base16#palette.normal.airline_warning = [
@@ -110,7 +113,6 @@ else
 
     let g:airline#themes#base16#palette.normal_modified.airline_warning =
         \ g:airline#themes#base16#palette.normal.airline_warning
-
 
     let g:airline#themes#base16#palette.insert.airline_warning =
         \ g:airline#themes#base16#palette.normal.airline_warning
@@ -133,4 +135,3 @@ else
   endfunction
   call airline#themes#base16#refresh()
 endif
-
