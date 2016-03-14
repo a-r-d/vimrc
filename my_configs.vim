@@ -62,5 +62,8 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 """"""" git clone https://github.com/Yggdroot/indentLine
 """"""" http://misc.flogisoft.com/bash/tip_colors_and_formatting
 """"""""""""""""""""""""""""""""
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_color_term = 16
+let g:indentLine_color_gui = '#424242'
+let g:indentLine_color_tty_light = 7
+let g:indentLine_color_tty_dark = 1
+let g:indentLine_enabled = 0
