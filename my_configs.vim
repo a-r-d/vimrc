@@ -1,7 +1,3 @@
-"""""""""""""""""
-"" Custom
-"""""""""""""
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,8 +25,7 @@ let g:airline_theme="kalisi"
 set gfn=Hack:h15,Source\ Code\ Pro:h13,Bitstream\ Vera\ Sans\ Mono:h12
 
 set foldmethod=indent
-set foldlevel=10
-set foldlevelstart=10
+set foldlevel=5
 
 """""""""""""""""""""""""""""""""""""
 "" Plugins configs
@@ -62,13 +57,10 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
-"syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
+""""""""""""""""""""""""""""""""
+""""""" indent line:
+""""""" git clone https://github.com/Yggdroot/indentLine
+""""""" http://misc.flogisoft.com/bash/tip_colors_and_formatting
+""""""""""""""""""""""""""""""""
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#A4E57E'

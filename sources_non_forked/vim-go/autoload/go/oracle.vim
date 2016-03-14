@@ -35,8 +35,8 @@ func! s:loclist(output)
         endif
         call add(llist, item)
     endfor
-    call go#list#Populate(llist)
-    call go#list#Window(len(llist))
+    call go#list#Populate("locationlist", llist)
+    call go#list#Window("locationlist", len(llist))
 endfun
 
 " This uses Vim's errorformat to parse the output from Oracle's 'plain output
@@ -56,10 +56,10 @@ func! s:loclistSecond(output)
     " useful and location only has the ability to show one line and column
     " number
     let errformat = "%f:%l.%c-%[%^:]%#:\ %m,%f:%l:%c:\ %m"
-    call go#list#ParseFormat(errformat, split(a:output, "\n"))
+    call go#list#ParseFormat("locationlist", errformat, split(a:output, "\n"))
 
-    let errors = go#list#Get()
-    call go#list#Window(len(errors))
+    let errors = go#list#Get("locationlist")
+    call go#list#Window("locationlist", len(errors))
 endfun
 
 func! s:getpos(l, c)
@@ -113,6 +113,10 @@ func! s:RunOracle(mode, selected, needs_package) range abort
                     \  bin_path,
                     \  shellescape(fname), pos, tags, a:mode)
     endif
+
+    " strip trailing slashes for each path in scoped. bug:
+    " https://github.com/golang/go/issues/14584
+    let scopes = go#util#StripTrailingSlash(scopes)
 
     " now append each scope to the end as Oracle's scope parameter. It can be
     " a packages or go files, dependent on the User's own choice. For more
