@@ -70,3 +70,12 @@ let g:indentLine_color_gui = '#424242'
 let g:indentLine_color_tty_light = 7
 let g:indentLine_color_tty_dark = 1
 let g:indentLine_enabled = 0
+
+
+""""""""""""""""""""""""""
+"" ctrlp.vim plugin
+"""""""""""""""""""""""""
+" defaults: https://github.com/ctrlpvim/ctrlp.vim/blob/master/autoload/ctrlp.vim
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bower_components|target|dist|build)|(\.(swp|ico|git|svn))$'
+
+
