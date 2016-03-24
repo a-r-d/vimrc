@@ -1,3 +1,28 @@
+# Things I added to this fork:
+
+- YouCompleteMe plugin
+- repmo (press ; to repeat the last numeric movement command e.g. 9k repeats with ;)
+- theme is peaksea
+- added remaps for ctr-c-v-p-x
+- enabled sysntastic
+- added ignores for ctrl-p (mapped to ctrl-f) for node_modules, bower_components, ect.
+- autoindent, smartindent, and 2 spaces for indentation.
+- ctrl-s does a save on insert mode.
+- there are no plugins to deal with split behavior, and all of the commands are default.
+- default view is nerd tree on left, vertical split then main buffer.
+
+
+
+# things to do to get this running:
+
+- install silversearcher-ag
+- install YCM manually
+
+
+
+
+----------------------------------------------------------------------
+
 # The Ultimate vimrc
 
 Over the last 8 years I have used and tweaked Vim. This is my Ultimate vimrc.
